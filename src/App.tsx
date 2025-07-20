@@ -15,10 +15,11 @@ import { VehicleOwnerRegistration } from './components/VehicleOwnerRegistration'
 import { MaterialSupplierRegistration } from './components/MaterialSupplierRegistration';
 import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
+import { ServicesPage } from './components/ServicesPage';
 import { User, Vehicle, Partner } from './types';
 import { vehicles } from './data/services';
 
-type ViewType = 'home' | 'vehicles' | 'materials' | 'about' | 'contact' | 'signup' | 'confirmation' | 'dashboard' | 'vehicle-details' | 'profile' | 'partner-dashboard';
+type ViewType = 'home' | 'vehicles' | 'materials' | 'about' | 'contact' | 'signup' | 'confirmation' | 'dashboard' | 'vehicle-details' | 'profile' | 'partner-dashboard' | 'services';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -176,6 +177,16 @@ function App() {
         return user ? <UserDashboard user={user} onVehicleSelect={handleVehicleSelect} /> : <HomePage />;
       case 'partner-dashboard':
         return partner ? <PartnerDashboard partner={partner} /> : <HomePage onLogin={handleShowLogin} onSignUp={handleShowSignUp} />;
+      case 'services':
+        return user ? (
+          <ServicesPage onServiceSelect={(service) => {
+            if (service === 'vehicles') {
+              setCurrentView('vehicles');
+            } else if (service === 'materials') {
+              setCurrentView('materials');
+            }
+          }} />
+        ) : <HomePage onLogin={handleShowLogin} onSignUp={handleShowSignUp} />;
       case 'vehicle-details':
         return selectedVehicle ? (
           <VehicleDetails 

@@ -3,7 +3,7 @@ import { Menu, X, Phone, Truck, User } from 'lucide-react';
 import { User as UserType } from '../types';
 import { AuthModal } from './AuthModal';
 
-type ViewType = 'home' | 'vehicles' | 'materials' | 'about' | 'contact' | 'signup' | 'dashboard' | 'profile';
+type ViewType = 'home' | 'vehicles' | 'materials' | 'about' | 'contact' | 'signup' | 'dashboard' | 'profile' | 'services';
 
 interface HeaderProps {
   user: UserType | null;
@@ -40,6 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   const loggedInNavItems = [
     { id: 'home', label: 'Home' },
+    { id: 'services', label: 'Services' },
     { id: 'contact', label: 'Contact Us' },
     { id: 'about', label: 'About Us' }
   ];
