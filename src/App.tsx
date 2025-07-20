@@ -178,15 +178,7 @@ function App() {
       case 'partner-dashboard':
         return partner ? <PartnerDashboard partner={partner} /> : <HomePage onLogin={handleShowLogin} onSignUp={handleShowSignUp} />;
       case 'services':
-        return user ? (
-          <ServicesPage onServiceSelect={(service) => {
-            if (service === 'vehicles') {
-              setCurrentView('vehicles');
-            } else if (service === 'materials') {
-              setCurrentView('materials');
-            }
-          }} />
-        ) : <HomePage onLogin={handleShowLogin} onSignUp={handleShowSignUp} />;
+        return user ? <UserDashboard user={user} onVehicleSelect={handleVehicleSelect} /> : <HomePage onLogin={handleShowLogin} onSignUp={handleShowSignUp} />;
       case 'vehicle-details':
         return selectedVehicle ? (
           <VehicleDetails 
